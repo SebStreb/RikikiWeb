@@ -6,12 +6,12 @@ module.exports = {
   entry: "./src/index.js",
   devtool: "eval-source-map",
   output: {
-    path: __dirname + "/docs",
+    path: path.join(__dirname, "docs"),
     filename: "rikiki.bundle.js",
-    publicPath: "/",
+    publicPath: "/RikikiWeb",
   },
   devServer: {
-    static: path.join(__dirname, "dist"),
+    static: path.join(__dirname, "docs"),
     open: true,
   },
   module: {
