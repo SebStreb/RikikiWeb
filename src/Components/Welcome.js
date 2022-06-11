@@ -1,6 +1,6 @@
-import Game from "./Game";
+import { Game } from "./Game";
 
-export default function Welcome() {
+const Welcome = () => {
     const main = document.querySelector("#content");
 
     main.innerHTML = `
@@ -58,3 +58,5 @@ export default function Welcome() {
         Game(list);
     });
 };
+
+export default Welcome;

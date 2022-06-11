@@ -1,7 +1,8 @@
 {
   "name": "rikiki_web",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Web app to play the game Rikiki",
+  "homepage": "https://sebstreb.github.io/RikikiWeb",
   "scripts": {
     "build": "webpack --mode=production",
     "start": "webpack serve"

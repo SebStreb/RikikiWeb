@@ -1,6 +1,6 @@
 import Welcome from "./Welcome";
 
-export default function GameOver(points) {
+const GameOver = (points) => {
     const main = document.querySelector("#content");
 
     let html = `
@@ -49,3 +49,5 @@ export default function GameOver(points) {
         Welcome();
     });
 };
+
+export default GameOver;

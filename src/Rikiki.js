@@ -54,6 +54,18 @@ export default class Rikiki {
         return this.players[this.startingPlayerIndex];
     }
 
+    get orderedPlayers() {
+        const tab = [];
+        
+        for (let i = 0; i < this.players.length; i++) {
+            const index = (this.startingPlayerIndex + i) % this.players.length;
+            const element = this.players[index];
+            tab.push(element)            
+        }
+
+        return tab;
+    }
+
     get maxHandSize() {
         return Math.floor((this.DECK_SIZE - 1) / this.players.length);
     }
