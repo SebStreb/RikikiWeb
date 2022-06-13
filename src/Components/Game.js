@@ -1,15 +1,17 @@
 import Rikiki from "../Rikiki";
 import Bets from "./Bets";
 
-const Game = (players) => {
+const Game = (players, options) => {
     const main = document.querySelector("#content");
+
+    const rikiki = new Rikiki(players, options);
 
     main.innerHTML = `
         <h1 class="text-center">Rikiki game</h1>
         <p class="h5 text-muted text-center mb-4">May the best player win!</p>
 
         <div class="mb-3 d-flex justify-content-between">
-            <h4>Round #<span id="roundNumber">0</span></h4>
+            <h4>Round #<span id="roundNumber">0</span>/${rikiki.maxRounds}</h4>
             <h5>Hand size: <span id="handSize">0 card</span></h5>
         </div>
 
@@ -17,8 +19,7 @@ const Game = (players) => {
 
         <div id="roundStage"></div> 
     `;
-
-    const rikiki = new Rikiki(players);
+    
     updateTable(rikiki);
     Bets(rikiki);
 };

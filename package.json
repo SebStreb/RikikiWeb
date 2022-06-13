@@ -1,6 +1,6 @@
 {
   "name": "rikiki_web",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Web app to play the game Rikiki",
   "homepage": "https://sebstreb.github.io/RikikiWeb",
   "scripts": {
