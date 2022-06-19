@@ -89,9 +89,7 @@ const Welcome = () => {
     const play = document.querySelector("#play");
 
     const updateRounds = () => {
-        console.log(options.overrideMaxHandSize, options.shouldDescend, options.jokerCount, list.length);
         const max = getMaxHandSize(options.overrideMaxHandSize, options.jokerCount, list.length);
-        console.log(max);
         rounds.innerHTML = getNumberOfRounds(max, options.shouldDescend);
     }
 
@@ -172,7 +170,6 @@ const Welcome = () => {
     });
 
     play.addEventListener("click", () => {
-        console.log("here");
         if (list.length < 2) return error.innerHTML = "Enter at least two players."
         Game(list, options);
     });
