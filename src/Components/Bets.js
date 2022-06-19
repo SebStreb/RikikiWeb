@@ -13,7 +13,12 @@ const Bets = (rikiki) => {
     for (const player of rikiki.orderedPlayers) {
         html += `
             <div class="form-group row">
-                <label for="${player}" class="col-6 col-form-label">${player}</label>
+                <label for="${player}" class="col-3 col-form-label">${player}</label>
+                ${
+                    player === rikiki.dealingPlayer ? 
+                        `<label id="lastPlayerBet" for="${player}" class="col-3 col-form-label"> Can't bet ${rikiki.handSize} </label>` :
+                        `<label for="${player}" class="col-3 col-form-label"></label>`
+                }
                 <div class="col-6">
                     <input inputmode="numeric" pattern="[0-9]*" type="number" class="form-control" id="${player}" value="0" placeholder="Player bet" aria-label="player bet">
                 </div>
@@ -32,6 +37,9 @@ const Bets = (rikiki) => {
 
     stage.innerHTML = html;
 
+    const sum = document.querySelector("#sum");
+    const lastPlayerBet = document.querySelector("#lastPlayerBet");
+
     const bets = rikiki.players.reduce((map, value) => {
         map[value] = 0;
         return map;
@@ -49,11 +57,11 @@ const Bets = (rikiki) => {
 
             bets[player] = bet;
 
-            const sum = document.querySelector("#sum");
-
             let total = 0;
             for (const player in bets) total += bets[player];
             sum.innerHTML = total;
+
+            lastPlayerBet.innerHTML = total <= rikiki.handSize ? `Can't bet ${rikiki.handSize - total}` : `Can bet anything`;
  
             if (total === rikiki.handSize) sum.classList.add("text-danger");
             else sum.classList.remove("text-danger");

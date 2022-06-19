@@ -1,6 +1,6 @@
-export default class Rikiki {
+const DECK_SIZE = 52;
 
-    DECK_SIZE = 55;
+class Rikiki {
 
     players;
     points;
@@ -49,6 +49,12 @@ export default class Rikiki {
         return false;
     }
 
+    get dealingPlayer() {
+        let index = this.startingPlayerIndex - 1;
+        if (index === -1) index = this.players.length - 1;
+        return this.players[index];
+    }
+
     get startingPlayer() {
         return this.players[this.startingPlayerIndex];
     }
@@ -66,13 +72,22 @@ export default class Rikiki {
     }
 
     get maxHandSize() {
-        if (!isNaN(this.options.maxHandSize)) return this.options.maxHandSize;
-        else return Math.floor((this.DECK_SIZE - 1) / this.players.length);
+        return getMaxHandSize(this.options.overrideMaxHandSize, this.options.jokerCount, this.players.length);
     }
 
     get maxRounds() {
-        if (this.options.shouldDescend) return this.maxHandSize * 2 - 1;
-        else return this.maxHandSize;
+        return getNumberOfRounds(this.maxHandSize, this.options.shouldDescend);
     }
 
 }
+
+const getMaxHandSize = (overrideMaxHandSize, jokerCount, numberOfPlayers) => {
+    const maxHandSize = Math.floor((DECK_SIZE + jokerCount - 1) / numberOfPlayers);
+    if (isNaN(overrideMaxHandSize)) return maxHandSize;
+    else if (overrideMaxHandSize > maxHandSize) return maxHandSize;
+    else return overrideMaxHandSize;
+};
+
+const getNumberOfRounds = (maxHandSize, shouldDescend) => shouldDescend ? maxHandSize * 2 - 1 : maxHandSize;
+
+export { Rikiki, getMaxHandSize, getNumberOfRounds };

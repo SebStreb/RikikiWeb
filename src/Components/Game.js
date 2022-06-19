@@ -1,4 +1,4 @@
-import Rikiki from "../Rikiki";
+import { Rikiki } from "../Rikiki";
 import Bets from "./Bets";
 
 const Game = (players, options) => {
@@ -34,7 +34,7 @@ const updateTable = (rikiki) => {
         <table class="table table-striped"><thead><tr>
             <th scope="col">Player name</th>
             <th scope="col">Points</th>
-            <th scope="col">Starting player</th>
+            <th scope="col">Player status</th>
         </tr></thead><tbody>
     `;
     for (const player of rikiki.players) {
@@ -42,7 +42,7 @@ const updateTable = (rikiki) => {
             <tr>
                 <th scope="row">${player}</th>
                 <td>${rikiki.points[player]}</td>
-                <td>${player === rikiki.startingPlayer ? "yes" : ""}</td>
+                <td>${player === rikiki.startingPlayer ? "starting" : (player === rikiki.dealingPlayer ? "dealing" : "")}</td>
             </tr>
         `;
     }
