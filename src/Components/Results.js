@@ -25,8 +25,11 @@ const Results = (rikiki, bets) => {
     }
     html += `
         <p>
-            <div class="col-md-12 text-center mb-2">
-                <button type="submit" class="btn btn-primary col-md-4" id="confirm">Confirm</button>
+            <div class="row mb-2">
+                <button type="submit" class="btn btn-danger col-sm-2" id="changeBets">Change Bets</button>
+                <div class="col-sm-2"></div>
+                <button type="submit" class="btn btn-primary col-sm-4" id="confirm">Confirm</button>
+                <div class="col-sm-4"></div>
             </div>
             <div id="error" class="text-danger text-center"></div>
         </p>
@@ -62,6 +65,11 @@ const Results = (rikiki, bets) => {
             else sum.classList.add("text-danger");
         });
     }
+
+    document.querySelector("#changeBets").addEventListener("click", (event) => {
+        event.preventDefault();
+        Bets(rikiki);
+    })
 
     
     document.querySelector("#confirm").addEventListener("click", (event) => {

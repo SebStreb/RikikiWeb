@@ -66,8 +66,10 @@ const Welcome = () => {
 
         <p> <div class="text-center">Playing for <span id="rounds">Infinity</span> rounds</div></p>
         <p>
-            <div class="col-md-12 text-center mb-2">
-                <button class="btn btn-primary col-md-4" id="play">Start playing</button>
+            <div class="row mb-2">
+                <div class="col-sm-4"></div>
+                <button class="btn btn-primary col-sm-4" id="play">Start playing</button>
+                <div class="col-sm-4"></div>
             </div>
             <div id="error" class="text-danger text-center"></div>
         </p>

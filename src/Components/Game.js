@@ -1,5 +1,6 @@
 import { Rikiki } from "../Rikiki";
 import Bets from "./Bets";
+import GameOver from "./GameOver";
 
 const Game = (players, options) => {
     const main = document.querySelector("#content");
@@ -11,7 +12,7 @@ const Game = (players, options) => {
         <p class="h5 text-muted text-center mb-4">May the best player win!</p>
 
         <div class="mb-3 d-flex justify-content-between">
-            <h4>Round #<span id="roundNumber">0</span>/${rikiki.maxRounds}</h4>
+            <h4>Round #<span id="roundNumber">0</span>/${rikiki.maxRounds} <button class="btn btn-danger" id="stop">Stop</button></h4>
             <h5>Hand size: <span id="handSize">0 card</span></h5>
         </div>
 
@@ -19,10 +20,17 @@ const Game = (players, options) => {
 
         <div id="roundStage"></div> 
     `;
+
+    document.querySelector("#stop").addEventListener("click", (event) => {
+        event.preventDefault();
+        GameOver(rikiki.points);
+    })
     
     updateTable(rikiki);
     Bets(rikiki);
 };
+
+// TODO : add or remove players during game
 
 const updateTable = (rikiki) => {
     document.querySelector("#roundNumber").innerHTML = rikiki.roundNumber;

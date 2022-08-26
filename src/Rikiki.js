@@ -30,10 +30,8 @@ class Rikiki {
         }
     }
 
-    /**
-     * Mutates the game state to go to next round.
-     * @returns true if the game is finished, false otherwise.
-     */
+    // TODO : find a way to roll back round
+
     nextRound() {
         this.roundNumber++;
         
