@@ -29,7 +29,7 @@ const Bets = (rikiki) => {
             <p>
                 <div class="row mb-2">
                     <div class="col-sm-4"></div>
-                    <button type="submit" class="btn btn-primary col-sm-4" id="confirm">Confirm</button>
+                    <button type="button" class="btn btn-primary col-sm-4" id="confirm">Confirm</button>
                     <div class="col-sm-4"></div>
                 </div>
                 <div id="error" class="text-danger text-center"></div>
